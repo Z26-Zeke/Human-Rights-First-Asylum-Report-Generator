@@ -1,4 +1,4 @@
-# Build Sprint 1
+# Build Sprint 1 ✅
 
 To begin work on this ticket, make sure you have finished:
 
