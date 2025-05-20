@@ -1,3 +1,5 @@
 VITE_AUTH_DOMAIN=dev-w1lnogryie8wi6wy.us.auth0.com
 VITE_AUTH_CLIENT_ID=FtRwG8wy57wy0afu5yTHyaXwDFpzHXDo
 VITE_API_URI=http://localhost:8005
+
+Created .env and added main.jsx wrapper for Auth0
