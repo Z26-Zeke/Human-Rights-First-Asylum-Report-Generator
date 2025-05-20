@@ -29,7 +29,10 @@ const useAppContextProvider = () => {
   };
 
   const fetchData = async () => {
-    const [fiscalData, citizenshipResults] = await Promise.all([getFiscalData(), getCitizenshipResults()]);
+    const [fiscalData, citizenshipResults] = await Promise.all([
+      getFiscalData(),
+      getCitizenshipResults(),
+    ]);
     setGraphData({ ...fiscalData, citizenshipResults });
     setIsDataLoading(false);
   };
@@ -38,13 +41,9 @@ const useAppContextProvider = () => {
     setGraphData({});
   };
 
-  const getYears = () => graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
-
-  useEffect(() => {
-    if (isDataLoading) {
-      fetchData();
-    }
-  }, [isDataLoading]);
+  // ✅ Define getYears as a utility function that reads from current state
+  const getYears = () =>
+    graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
 
   return {
     graphData,
@@ -52,7 +51,7 @@ const useAppContextProvider = () => {
     isDataLoading,
     updateQuery,
     clearQuery,
-    getYears,
+    getYears, // ✅ exposed to context
   };
 };
 
@@ -63,5 +62,9 @@ export function useAppContext() {
 export function ProvideAppContext({ children }) {
   const contextValue = useAppContextProvider();
 
-  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={contextValue}>
+      {children}
+    </AppContext.Provider>
+  );
 }

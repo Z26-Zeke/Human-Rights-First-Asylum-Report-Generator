@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { ProvideAppContext } from './context/AppContext'; // ✅ Import the provider
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         redirect_uri: window.location.origin,
       }}
     >
-      <App />
+      <ProvideAppContext> {/* ✅ Wrap the App inside the context */}
+        <App />
+      </ProvideAppContext>
     </Auth0Provider>
   </BrowserRouter>
 );
