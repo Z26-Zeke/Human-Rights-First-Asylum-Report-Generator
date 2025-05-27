@@ -16,6 +16,7 @@ Deliver the following:
 ### Relevant Files
 
 Your React code and styles should be added to `src/components/pages/Landing/index.jsx`.
+Quick link: https://github.com/Z26-Zeke/asylum-hrf-fe-starter/blob/main/src/components/pages/Landing/index.jsx
 
 > There are comments in the file to help guide you.
 
