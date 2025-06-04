@@ -12,12 +12,16 @@ To begin work on this ticket, make sure you have finished:
 Deliver the following:
 
 - Integrate this frontend application with an API.
-- Rework the `AppContext.jsx` file and data visualizations to use an API instead of `test_data.json`.
+- Rework the `AppContext.jsx` :https://github.com/Z26-Zeke/asylum-hrf-fe-starter/blob/main/src/context/AppContext.jsx file and data visualizations to use an API instead of `test_data.json`.
 - The graphs on the Graphs page should display after the integration.
 
 ### Relevant Files
 
-You must inspect the code in `src/components/pages/DataVisualizations`, `src/data`, and `src/components/common` to ensure that the application is pulling data from an API and not the dummy data file. Specifically, ONLY MAKE CHANGES in `AppContext.jsx`.
+You must inspect the code in:
+`src/components/pages/DataVisualizations`:https://shorturl.at/FxBbi, https://shorturl.at/RXNyQ, https://shorturl.at/qOso4, 
+`src/data`: https://shorturl.at/9QwTN
+`src/components/common`: https://shorturl.at/uwK6P
+to ensure that the application is pulling data from an API and not the dummy data file. Specifically, ONLY MAKE CHANGES in `AppContext.jsx`.
 
 ### Guidance
 
