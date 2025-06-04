@@ -1,49 +1,56 @@
+
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import testData from '../data/test_data.json';
 import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 const AppContext = createContext({});
 const API_URL = 'https://hrf-asylum-be-b.herokuapp.com/cases';
 
 const useAppContextProvider = () => {
-  const [graphData, setGraphData] = useState(testData);
+  const [graphData, setGraphData] = useState({});
   const [isDataLoading, setIsDataLoading] = useState(false);
 
   useLocalStorage({ graphData, setGraphData });
 
   const getFiscalData = async () => {
     const fiscalRes = await axios.get(`${API_URL}/fiscalSummary`);
-    const fiscalResData = fiscalRes.data;
-    return fiscalResData;
+    return fiscalRes.data;
   };
 
   const getCitizenshipResults = async () => {
     const citizenRes = await axios.get(`${API_URL}/citizenshipSummary`);
-    const citizenData = citizenRes.data;
-    return citizenData;
+    return citizenRes.data;
+  };
+
+  const fetchData = async () => {
+    try {
+      const [fiscalData, citizenshipResults] = await Promise.all([
+        getFiscalData(),
+        getCitizenshipResults(),
+      ]);
+      setGraphData({ ...fiscalData, citizenshipResults });
+    } catch (error) {
+      console.error("API fetch failed:", error);
+    } finally {
+      setIsDataLoading(false);
+    }
   };
 
   const updateQuery = async () => {
     setIsDataLoading(true);
-  };
-
-  const fetchData = async () => {
-    const [fiscalData, citizenshipResults] = await Promise.all([
-      getFiscalData(),
-      getCitizenshipResults(),
-    ]);
-    setGraphData({ ...fiscalData, citizenshipResults });
-    setIsDataLoading(false);
+    await fetchData();
   };
 
   const clearQuery = () => {
     setGraphData({});
   };
 
-  // ✅ Define getYears as a utility function that reads from current state
   const getYears = () =>
     graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
+
+  useEffect(() => {
+    fetchData(); // Optional: auto-fetch on mount
+  }, []);
 
   return {
     graphData,
@@ -51,7 +58,7 @@ const useAppContextProvider = () => {
     isDataLoading,
     updateQuery,
     clearQuery,
-    getYears, // ✅ exposed to context
+    getYears,
   };
 };
 
