@@ -32,35 +32,22 @@ The goal of this project is to create a search tool that gives users a more inte
 
 ## Tickets
 
-Here are summaries of the three tickets in the `tickets` directory, with links to the full ticket descriptions:
+Here are summaries of the the ticket items that made up the bulk of the project:
 
 1. **Build Sprint 1: Landing Page**
-
-   - [Ticket Description](tickets/1_firstTicket.md)
-   - Deliver a landing page that matches the provided design screenshot, with a focus on the browser experience.
+   - Delivered a landing page that matches the provided design screenshot, with a focus on the browser experience.
 
 2. **Build Sprint 2: API Integration**
-
-   - [Ticket Description](tickets/2_secondTicket.md)
-   - Integrate the frontend application with an API to fetch data, and update the data visualizations to use the API data instead of the test data.
+   - Integrated the frontend application with an API to fetch data, and updated the data visualizations to use the API data instead of test data.
 
 3. **Build Sprint 3: Authentication**
-   - [Ticket Description](tickets/3_thirdTicket.md)
-   - Integrate the Auth0 microservice to provide user authentication, and create a profile page that displays basic information about the logged-in user.
-
-## Stretch Ticket
-
-In addition to the three main tickets, there is also a stretch ticket available:
-
-- **Stretch Ticket: Migrate to Next.js**
-  - [Ticket Description](tickets/4_stretchTicketNEXTjs.md)
-  - Migrate the current React application to Next.js to leverage server-side rendering, better performance, and routing capabilities.
+   - Integrated the Auth0 microservice to provide user authentication, and created a profile page that displays basic information about the logged-in user.
 
 ## Resources
 
 **The Setup for this project will require a new LTS Version of NodeJS to be installed. Node Version 20.x works well for this purpose.**
 
-The following deployed site shows the exact deliverable and what you should be building:
+The following deployed site shows the exact deliverable and what the site should look like:
 
 - [Asylum Front End](https://asylum-fe.vercel.app)
 
